@@ -68,11 +68,26 @@ public class WeightTest {
                 new Herb("herb7", Herb.Type.PERENNIAL)
         };
         Map<Herb.Type, Set<Herb>> herbsByType =
-                new EnumMap<Herb.Type, Set<Herb>>(Herb.Type.class);
+                new EnumMap<>(Herb.Type.class);
         for (Herb.Type t : Herb.Type.values())
-            herbsByType.put(t, new HashSet<Herb>());
+            herbsByType.put(t, new HashSet<>());
         for (Herb h : garden)
             herbsByType.get(h.getType()).add(h);
         System.out.println(herbsByType);
+    }
+
+
+    @Test
+    public void operateTest() {
+        double x = 4;
+        double y = 2;
+        for (MathOperation op : ExtendedOperation.class.getEnumConstants())
+            System.out.printf("%f %s %f = %f%n",
+                    x, op, y, op.apply(x, y));
+
+        for (MathOperation op : Arrays.asList(BasicOperation.values()))
+            System.out.printf("%f %s %f = %f%n",
+                    x, op, y, op.apply(x, y));
+
     }
 }
