@@ -99,3 +99,5 @@ equals方法诀窍：
 + toString方法返回包括所有值的关键信息
 
 **11.谨慎的覆盖clone**
++ 如果你覆盖了非final类中的clone方法，则应返回一个通过调用super.clone而得到的对象
++ 
