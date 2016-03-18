@@ -70,3 +70,32 @@
 + 不关心类是否提供了逻辑相等的测试功能
 + 超类已经覆盖了equals,从超类集成过来的行为对于子类也是合适的
 + 类是私有或者包级私有的，可以确定它的equals方法，
+
+>equals实现了等价关系：
++ 自反性：对任何非null的引用值x,x.equals(x)必须返回true
++ 对称性：对于任何非null的引用x\y,当且仅当y.equals(x)返回true时，x.equals(y)必须返回true
++ 传递性：对于任何非null的引用值x\y\z,如果x.equals(y)返回true且y.equals(z)也返回true,那么x.equals(z)也必须返回true
++ 一致性：对于任何非null的引用值x\y,只要equals的比较操作的在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致地返回true或者false.
++ 对于任何非null的引用值x,x.equals(null)必须返回false;
+
+equals方法诀窍：
+1. 使用==操作符检查“参数是否为这个对象的引用”
+2. 使用instanceof操作符检查"参数是否为正确的类型"
+3. 把参数转换成正确的类型
+4. 对于该类中的每个关键域，检查参数中的域是否与该对象中的域相匹配
+5. 完成编写equals方法后确认，对称性，一致性，传递性
+
+**告诫**:
++ 覆盖equals时总要覆盖hashCode
++ 不要企图让equals过于智能
++ 不要将equals声明中的Object对象替换为其他类型
+
+**09.覆盖equals时总要覆盖hashCode**
++ 相等的对象必须有相等的hashCode
++ 不要试图从散列码计算中排除掉一个对象的关键部分来提高性能
+
+**10.始终覆盖toString**
++ 提供好的toString实现可以是类看起来更加舒适
++ toString方法返回包括所有值的关键信息
+
+**11.谨慎的覆盖clone**
